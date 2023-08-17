@@ -21,7 +21,6 @@ trait CommonMethods
         $replacement =  str_replace(' ', '_', $uniqueness);
         return uniqid($replacement, true);
     }
-
     public function apiJsonResponse($success = 1,  $message = null, $data = [], $exception_error_code = 400)
     {
 
@@ -31,19 +30,15 @@ trait CommonMethods
 
         return response()->json($response, 200, [], JSON_NUMERIC_CHECK);
     }
-
     public function FTPFileUpload($file, $path, $type = 'general')
     {
         //$file           = $request->file('attachment');
         $extension      = $file->getClientOriginalExtension();
         $originalName   = $file->getClientOriginalName();
         $filename       = unique_name($type) . "." . $extension;
-
         // return $filename;
-
         $upload_success = Storage::disk('ftp')->put($path . $filename, fopen($file, 'r+'));
         // return $upload_success;
-
         return ['upload_status' => $upload_success, 'filename' => $filename, 'original_name' => $originalName];
     }
 
@@ -58,9 +53,6 @@ trait CommonMethods
         return $date->format('Y-m-d H:i:s');
     }
 
-
-
-
     /**
      * Upload a single file in the server
      *
@@ -70,6 +62,7 @@ trait CommonMethods
      * @param null $filename
      * @return false|string
      */
+
     public function uploadOne(UploadedFile $file, $folder = null, $disk = 'public', $filename = null)
     {
         $name = !is_null($filename) ? $filename :  Str::Random(25);
@@ -94,9 +87,6 @@ trait CommonMethods
         return $file->store($folder, ['disk' => $disk]);
     }
 
-
-
-
     /**
      * success response method.
      *
@@ -111,9 +101,6 @@ trait CommonMethods
         ];
         return response()->json($response, 200);
     }
-
-
-
     /**
      * return error response.
      *
@@ -140,4 +127,15 @@ trait CommonMethods
     {
         return Auth::guard('company');
     }
+      /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    
+    protected function guardcustomer()
+    {
+        return Auth::guard('customer');
+    }
+
 }

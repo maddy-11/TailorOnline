@@ -19,7 +19,6 @@ class ComposerServiceProvider extends ServiceProvider
     {
         //
     }
-
     /**
      * Bootstrap services.
      *
@@ -27,13 +26,12 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         // Global
+        // Global
         View::composer(
             // This class binds the $logged_in_user variable to every view
             '*',
             GlobalComposer::class
         );
-
         // Admin
         View::composer(
             // This binds items like number of users pending approval when account approval is set to true

@@ -47,6 +47,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $companyNamespace = 'App\Http\Controllers\Company';
 
+      /**
+     * @var string
+     */
+    protected $customerNamespace = 'App\Http\Controllers\Customer';
+
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      *
@@ -92,6 +97,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
         $this->mapAdminRoutes();
         $this->mapCompanyRoutes();
+        $this->mapCustomerRoutes();
         $this->mapSupplierRoutes();
         $this->mapApiRoutes();
     }
@@ -146,6 +152,24 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->companyNamespace)
              ->group(base_path('routes/company.php'));
      }
+
+
+      /**
+     * Define the "customer" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+
+     protected function mapCustomerRoutes()
+     {
+         Route::middleware(['guest', 'web','customer'])->prefix('customer')
+             ->as('customer.')
+             ->namespace($this->customerNamespace)
+             ->group(base_path('routes/customer.php'));
+     }
+
 
 
 
