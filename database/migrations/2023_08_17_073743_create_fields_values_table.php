@@ -16,13 +16,14 @@ return new class extends Migration
     {
         Schema::create('form_field_values', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('field_id');
+            $table->unsignedBigInteger('field_id');
             $table->string('option_value')->nullable();
             $table->string('image')->nullable();
             $table->integer('sort_order')->default(0);
             $table->enum('status', ['Active', 'Inactive']);
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);
+            $table->foreign('field_id')->references('id')->on('fields');
         });
     }
 

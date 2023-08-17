@@ -16,12 +16,14 @@ class CreateFormFieldsTable extends Migration
     {
         Schema::create('form_fields', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('form_id');
-            $table->integer('field_id');
+            $table->unsignedBigInteger('service_id');
+            $table->unsignedBigInteger('field_id');
             $table->enum('required', ['yes', 'no']);
             $table->integer('sort_order')->default(0);
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);
+            $table->foreign('field_id')->references('id')->on('fields');
+            $table->foreign('service_id')->references('id')->on('services');
         });
     }
 
