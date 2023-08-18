@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\FieldController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,6 +59,11 @@ Route::post('companies/loan-applications/update',[CompanyController::class,'upda
 
 
 Route::resource('companies', CompanyController::class);
+Route::get('fields/change-status/{id}',[FieldController::class,'changeStatus'])->name('fields.change-status');
+Route::post('fields/field-status/update',[FieldController::class,'updateStatus'])->name('fields.update-status'); 
+
+Route::get('fields/list',[FieldController::class,'list'])->name('fields.list');
+Route::resource('fields', FieldController::class);
 
  
  

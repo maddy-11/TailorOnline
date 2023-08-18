@@ -24,7 +24,7 @@ Route::group(['namespace' => 'Company', 'prefix' => 'company', 'as' => 'company.
     Route::get('/login', [CompanyController::class, 'login'])->name('company-login');
     Route::post('/login', [CompanyController::class, 'loginProcess'])->name('company-loginProcess');
 });
-Route::group(['namespace' => 'Customer', 'prefix' => 'company', 'as' => 'customer.'], function () {
+Route::group(['namespace' => 'Customer', 'prefix' => 'customer', 'as' => 'customer.'], function () {
     Route::get('/login', [CustomerController::class, 'login'])->name('customer-login');
     Route::post('/login', [CustomerController::class, 'loginProcess'])->name('customer-loginProcess');
 });
