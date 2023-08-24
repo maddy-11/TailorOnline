@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\FieldController;
+use App\Http\Controllers\Admin\FieldValueController;
+use App\Http\Controllers\Admin\FormFieldController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,5 +68,9 @@ Route::post('fields/field-status/update',[FieldController::class,'updateStatus']
 Route::get('fields/list',[FieldController::class,'list'])->name('fields.list');
 Route::resource('fields', FieldController::class);
 
- 
- 
+Route::get('fieldvalues/list',[FieldValueController::class,'list'])->name('fieldvalues.list');
+Route::resource('fieldvalues', FieldValueController::class);
+
+
+Route::get('formfields/list',[FormFieldController::class,'list'])->name('formfields.list');
+Route::resource('formfields', FormFieldController::class);

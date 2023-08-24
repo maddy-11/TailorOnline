@@ -128,23 +128,57 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="{{route('admin.suppliers.index')}}" title="All Suppliers" data-filter-tags="ui components popovers">
-                                <span class="nav-link-text" data-i18n="nav.ui_components_popovers">All Suppliers</span>
+                            <a href="{{route('admin.fields.index')}}" title="All Fields" data-filter-tags="ui components popovers">
+                                <span class="nav-link-text" data-i18n="nav.ui_components_popovers">All Fields</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{route('admin.suppliers.index')}}?status=Pending" title="Pending Suppliers" data-filter-tags="ui components popovers">
-                                <span class="nav-link-text" data-i18n="nav.ui_components_popovers">Pending Suppliers</span>
+                            <a href="{{route('admin.fields.create')}}?status=Pending" title="Create New Field" data-filter-tags="ui components popovers">
+                                <span class="nav-link-text" data-i18n="nav.ui_components_popovers">New Field</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" title="UI Components" data-filter-tags="ui components">
+                        <i class="fal fa-window"></i>
+                        <span class="nav-link-text" data-i18n="nav.ui_components">Form Fields Values</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{route('admin.fieldvalues.index')}}" title="All Fields Values" data-filter-tags="ui components popovers">
+                                <span class="nav-link-text" data-i18n="nav.ui_components_popovers">All Fields</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{route('admin.suppliers.index')}}?status=Approved" title="Approved Suppliers" data-filter-tags="ui components popovers">
-                                <span class="nav-link-text" data-i18n="nav.ui_components_popovers">Approved Suppliers</span>
+                            <a href="{{route('admin.fieldvalues.create')}}" title="New Field Values" data-filter-tags="ui components popovers">
+                                <span class="nav-link-text" data-i18n="nav.ui_components_popovers">New Field Value</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="#" title="UI Components" data-filter-tags="ui components">
+                        <i class="fal fa-window"></i>
+                        <span class="nav-link-text" data-i18n="nav.ui_components">Service Form Fields</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{route('admin.formfields.index')}}" title="All Fields Values" data-filter-tags="ui components popovers">
+                                <span class="nav-link-text" data-i18n="nav.ui_components_popovers">All Service Form Fields</span>
                             </a>
                         </li>
 
+                        <li>
+                            <a href="{{route('admin.formfields.create')}}" title="New Field Values" data-filter-tags="ui components popovers">
+                                <span class="nav-link-text" data-i18n="nav.ui_components_popovers">New Service Form Fields</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
