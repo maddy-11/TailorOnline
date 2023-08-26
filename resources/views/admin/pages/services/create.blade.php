@@ -45,39 +45,25 @@
                 </h2>
             </div>
             <div class="panel-container show">
-                <form action="{{route('admin.formfields.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.services.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="panel-content">
                         <div class="panel-tag"></div>
                         <div class="row ">
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="label" class="form-label">Label</label>
-                                    <input type="text" id="label" name="label" class="form-control form-control-lg rounded-0" value="{{ old('label') }}" placeholder="Label">
-                                    @error('label')
+                                    <label for="name" class="form-name">Service Name</label>
+                                    <input type="text" id="name" name="name" class="form-control rounded-0" value="{{ old('name') }}" placeholder="Service Name">
+                                    @error('name')
                                     <span class="invalid-feedback" role="alert"> {{ $message }}
                                     </span>
                                     @enderror
                                 </div>
-                            </div> 
-
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="field_type" class="form-label">Field Type</label>
-                                    <select class="custom-select" id="field_type" name="field_type">
-                                        <option value="input">Input</option>
-                                        <option value="textarea">Textarea</option>
-                                        <option value="select">Select</option>
-                                        <option value="radio">Radio</option>
-                                        <option value="checkbox">Checkbox</option>
-                                    </select>
-                                </div>
                             </div>
-
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="sort_order" class="form-label">sort_order</label>
-                                    <input type="number" id="sort_order" name="sort_order" class="form-control form-control-lg rounded-0  @error('sort_order') is-invalid @enderror" value="{{ old('sort_order') }}" placeholder="sort_order">
+                                    <label for="sort_order" class="form-label">Sort Order</label>
+                                    <input type="number" id="sort_order" name="sort_order" class="form-control rounded-0  @error('sort_order') is-invalid @enderror" value="{{ old('sort_order') }}" placeholder="0">
                                     @error('sort_order')
                                     <span class="invalid-feedback" role="alert"> {{ $message }}
                                     </span>
@@ -95,12 +81,14 @@
                             </div>
 
                         </div>
-                    </div> 
+
 
                     <div class="panel-content border-faded border-left-0 border-right-0 border-bottom-0 d-flex flex-row float-right">
-                        <button class="btn btn-warning mr-4 waves-effect waves-themed" type="button" onclick="location.href='{{route('admin.fields.index')}}'">Cancel</button>
+                        <button class="btn btn-warning mr-4 waves-effect waves-themed" type="button" onclick="location.href='{{route('admin.services.index')}}'">Cancel</button>
                         <button class="btn btn-primary waves-effect waves-themed" type="submit">Save</button>
                     </div>
+                    </div>
+
                 </form>
             </div>
         </div>

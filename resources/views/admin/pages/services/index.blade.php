@@ -15,7 +15,7 @@
     <li class="breadcrumb-item">
         <a href="javascript:void(0);">Admin</a>
     </li>
-    <li class="breadcrumb-item">Fields</li>
+    <li class="breadcrumb-item">Services</li>
     <li class="breadcrumb-item active">List</li>
     <li class="position-absolute pos-top pos-right d-none d-sm-block">
         <span class="js-get-date"></span>
@@ -23,7 +23,7 @@
 </ol>
 <div class="subheader">
     <h1 class="subheader-title">
-        <i class="subheader-icon fal fa-table"></i> Fields:
+        <i class="subheader-icon fal fa-table"></i> Services:
         <span class="fw-300">List</span>
         <sup class="badge badge-primary fw-500">ADDON</sup>
         <small>
@@ -39,7 +39,7 @@
                     Example <span class="fw-300"><i>Table</i></span>
                 </h2>
                 <div class="panel-toolbar">
-                    <a href="{{route('admin.formfields.create')}}" class="btn btn-primary btn-sm waves-effect waves-themed">Create New</a>
+                    <a href="{{route('admin.services.create')}}" class="btn btn-primary btn-sm waves-effect waves-themed">Create New</a>
                 </div>
             </div>
             <div class="panel-container show">
@@ -48,9 +48,8 @@
                     <table id="dt-basic-example" class="table table-bordered table-hover table-striped w-100">
                         <thead>
                             <tr>
-                                <th>Service</th>
-                                <th>Field</th>
-                                <th>Required</th>
+                                <th>Service Name</th>
+                                <th>Status</th> 
                                 <th>Sort Order</th>
                                 <th>Action</th>
                             </tr>
@@ -59,9 +58,8 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Service</th>
-                                <th>Field</th>
-                                <th>Required</th>
+                            <th>Service Name</th>
+                                <th>Status</th> 
                                 <th>Sort Order</th>
                                 <th>Action</th>
                             </tr>
@@ -114,14 +112,10 @@
                 type: 'get'
             },
             columns: [{
-                    data: 'service_id'
+                    data: 'name'
                 },
                 {
-                    data: 'form_id'
-                },
-                {
-                    data: 'required'
-
+                    data: 'status'
                 },
                 {
                     data: 'sort_order'

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\FieldController;
 use App\Http\Controllers\Admin\FieldValueController;
 use App\Http\Controllers\Admin\FormFieldController;
+use ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,3 +75,7 @@ Route::resource('fieldvalues', FieldValueController::class);
 
 Route::get('formfields/list',[FormFieldController::class,'list'])->name('formfields.list');
 Route::resource('formfields', FormFieldController::class);
+
+
+Route::get('services/list',[ServiceController::class,'list'])->name('services.list');
+Route::resource('services', ServiceController::class);
