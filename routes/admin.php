@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\FieldController;
 use App\Http\Controllers\Admin\FieldValueController;
 use App\Http\Controllers\Admin\FormFieldController;
-use ServiceController;
+use App\Http\Controllers\Admin\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
