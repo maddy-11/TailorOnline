@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\FieldController;
 use App\Http\Controllers\Admin\FieldValueController;
 use App\Http\Controllers\Admin\FormFieldController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\Auth\Permission\PermissionsController;
+use App\Http\Controllers\Admin\Auth\Permission\PermissionTableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,43 +41,53 @@ Route::get('/form', function () {
 
 Route::resource('dashboard', DashboardController::class);
 
-Route::get('suppliers/list',[SupplierController::class,'list'])->name('suppliers.list');
-Route::get('suppliers/change-password/{id}',[SupplierController::class,'changePassword'])->name('suppliers.change-password');
-Route::post('suppliers/update-password',[SupplierController::class,'update_password'])->name('supplier.update-password');
+Route::get('suppliers/list', [SupplierController::class, 'list'])->name('suppliers.list');
+Route::get('suppliers/change-password/{id}', [SupplierController::class, 'changePassword'])->name('suppliers.change-password');
+Route::post('suppliers/update-password', [SupplierController::class, 'update_password'])->name('supplier.update-password');
 
-Route::get('companies/supplier-change-status/{id}',[SupplierController::class,'changeSupplierStatus'])->name('company.suppliers.change-status');
-Route::post('companies/supplier-status/update',[SupplierController::class,'updateSupplierStatus'])->name('companies.supplier.update-status');
+Route::get('companies/supplier-change-status/{id}', [SupplierController::class, 'changeSupplierStatus'])->name('company.suppliers.change-status');
+Route::post('companies/supplier-status/update', [SupplierController::class, 'updateSupplierStatus'])->name('companies.supplier.update-status');
 
 Route::resource('suppliers', SupplierController::class);
 
-Route::get('companies/list',[CompanyController::class,'list'])->name('companies.list');
-Route::get('companies/change-password/{id}',[CompanyController::class,'changePassword'])->name('companies.change-password');
-Route::post('companies/update-password',[CompanyController::class,'update_password'])->name('companies.update-password'); 
+Route::get('companies/list', [CompanyController::class, 'list'])->name('companies.list');
+Route::get('companies/change-password/{id}', [CompanyController::class, 'changePassword'])->name('companies.change-password');
+Route::post('companies/update-password', [CompanyController::class, 'update_password'])->name('companies.update-password');
 //Add Credit
-Route::get('companies/add-credit/{id}',[CompanyController::class,'addCredit'])->name('companies.add-credit');
-Route::post('companies/update-credit',[CompanyController::class,'update_credit'])->name('companies.update-credit'); 
+Route::get('companies/add-credit/{id}', [CompanyController::class, 'addCredit'])->name('companies.add-credit');
+Route::post('companies/update-credit', [CompanyController::class, 'update_credit'])->name('companies.update-credit');
 
-Route::get('companies/loan-applications',[CompanyController::class,'loanApplications'])->name('companies.loan-applications');
-Route::get('companies/loan-applications-list',[CompanyController::class,'listLoanApplications'])->name('company.loanapplications.list');
+Route::get('companies/loan-applications', [CompanyController::class, 'loanApplications'])->name('companies.loan-applications');
+Route::get('companies/loan-applications-list', [CompanyController::class, 'listLoanApplications'])->name('company.loanapplications.list');
 
-Route::get('companies/loan-applications-change-status/{id}',[CompanyController::class,'changeLoanApplicationStatus'])->name('company.loanapplication.change-status');
-Route::post('companies/loan-applications/update',[CompanyController::class,'updateLoanApplicationStatus'])->name('companies.loanapplication.update-status'); 
+Route::get('companies/loan-applications-change-status/{id}', [CompanyController::class, 'changeLoanApplicationStatus'])->name('company.loanapplication.change-status');
+Route::post('companies/loan-applications/update', [CompanyController::class, 'updateLoanApplicationStatus'])->name('companies.loanapplication.update-status');
+
+
+// Permission Management 
+
+Route::get('permissions/list', [PermissionsController::class, 'list'])->name('permissions.list');
+Route::resource('permissions', PermissionsController::class);
+
+//For DataTables
+Route::post('permissions/get', PermissionTableController::class)->name('permissions.get');
+
 
 
 Route::resource('companies', CompanyController::class);
-Route::get('fields/change-status/{id}',[FieldController::class,'changeStatus'])->name('fields.change-status');
-Route::post('fields/field-status/update',[FieldController::class,'updateStatus'])->name('fields.update-status'); 
+Route::get('fields/change-status/{id}', [FieldController::class, 'changeStatus'])->name('fields.change-status');
+Route::post('fields/field-status/update', [FieldController::class, 'updateStatus'])->name('fields.update-status');
 
-Route::get('fields/list',[FieldController::class,'list'])->name('fields.list');
+Route::get('fields/list', [FieldController::class, 'list'])->name('fields.list');
 Route::resource('fields', FieldController::class);
 
-Route::get('fieldvalues/list',[FieldValueController::class,'list'])->name('fieldvalues.list');
+Route::get('fieldvalues/list', [FieldValueController::class, 'list'])->name('fieldvalues.list');
 Route::resource('fieldvalues', FieldValueController::class);
 
 
-Route::get('formfields/list',[FormFieldController::class,'list'])->name('formfields.list');
+Route::get('formfields/list', [FormFieldController::class, 'list'])->name('formfields.list');
 Route::resource('formfields', FormFieldController::class);
 
 
-Route::get('services/list',[ServiceController::class,'list'])->name('services.list');
+Route::get('services/list', [ServiceController::class, 'list'])->name('services.list');
 Route::resource('services', ServiceController::class);
