@@ -84,15 +84,23 @@ class FieldController extends Controller
     public function store(Request $request)
     {
         $inputs = $request->all();
-        $options = $inputs['option'];
-        // return $options;
 
+                if (isset($inputs['option']) && !empty($inputs['option'])) {
+                    $options = $inputs['option'];
+
+                    $options = array_filter($options, function ($value) {return $value !== null;});
+                    // return $options;
+
+                } 
+                else {
+                    $options = []; 
+                }
         $fieldInsertion = Field::create($inputs);
 
         $field_id = $fieldInsertion->id;
         $services = $inputs['ms_item'];
 
-        $options = $inputs['option'];
+        // $options = $inputs['option'];
 
         foreach ($services as $service) {
             Fields_service::create([
@@ -100,12 +108,9 @@ class FieldController extends Controller
                 'services_id' => $service
             ]);
         }
-
-
         
-        // return redirect(route('admin.fields.index'));
-        
-        return "hello";
+        return redirect('admin/fields');
+
 
     }
 
