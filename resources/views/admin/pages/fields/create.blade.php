@@ -100,14 +100,14 @@
                             </div>
 
                             <!-- ---------------- -->
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 row">
                             <div class="col-lg-10 m-0 mb-5 row p-0 " id="containerDiv" >
 
                                
                                 
                             </div>
 
-                            <div class="row d-none" id="btn_hide" style="justify-content: center;align-items: center;">
+                            <div class=" col-lg-2 row d-none" id="btn_hide" style="justify-content: center;align-items: center;">
                                 <div onclick="addInput(this)" class="btn btn-dark text-center m-1 fs px-3">+</div>
                                 <div onclick="removeInput()" class="btn btn-dark text-center m-1 fs px-3">--</div>
                             </div>
@@ -129,7 +129,7 @@
                                     <label for="status" class="form-label">Services</label>
 
                                      <select class="select2 form-control form-control custom-select" placeholder="Services"  multiple="multiple" name="ms_item[]" >
-                                        
+
                                         @foreach($services as $service)
                                         <option value="{{ $service->id }}">{{ $service->name }}</option>
                                         @endforeach
@@ -165,16 +165,22 @@ function addInitialInputs() {
         btn.classList.remove('d-none');
         containerDiv.innerHTML = "";
 
-        for (let i = 1; i <= 2; i++) {
+        
             containerDiv.innerHTML += `
                 <div class="col-lg-5">
                     <div class="form-group">
-                        <input type="text" placeholder="Option ${i}" class="fs-s rounded form-control" name="option[]">
+                        <input type="text" placeholder="Option 1" class="fs-s rounded form-control" name="option[]">
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        <input type="file" placeholder="Image 1" class="fs-s rounded form-control" name="images[]">
                     </div>
                 </div>
             `;
         }
-    }
+    
     else{
         containerDiv.innerHTML = "";
         btn.classList.add('d-none');
@@ -183,7 +189,8 @@ function addInitialInputs() {
 
 function addInput() {
     var containerDiv = document.getElementById("containerDiv");
-    var inputCount = containerDiv.querySelectorAll("input").length + 1;
+    var inputCount = containerDiv.querySelectorAll("input[type='text']").length + 1;
+
 
     if (inputCount <= 10) { 
         var newContainer = document.createElement("div");
@@ -195,24 +202,37 @@ function addInput() {
             </div>
         `;
 
-        containerDiv.appendChild(newContainer);
-    }
+        var imageContainer = document.createElement("div");
+        imageContainer.className = "col-lg-5";
 
+        imageContainer.innerHTML = `
+            <div class="form-group">
+                <input type="file" placeholder="Image ${inputCount}" class="fs-s mt-1 rounded form-control" name="images[]">
+            </div>
+        `;
+
+        containerDiv.appendChild(newContainer);
+        containerDiv.appendChild(imageContainer);
+    }
 }
+
 
 
 
 function removeInput() {
-    
     var containerDiv = document.getElementById("containerDiv");
     var inputContainers = containerDiv.querySelectorAll(".col-lg-5");
 
     if (inputContainers.length >= 2) {
-        
+        // Remove the last two containers, which include both text and file inputs
         var lastContainer = inputContainers[inputContainers.length - 1];
+        var secondLastContainer = inputContainers[inputContainers.length - 2];
+        
         containerDiv.removeChild(lastContainer);
+        containerDiv.removeChild(secondLastContainer);
     }
 }
+
 
 
 

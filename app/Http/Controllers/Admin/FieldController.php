@@ -86,17 +86,43 @@ class FieldController extends Controller
         $inputs = $request->all();
 
                 if (isset($inputs['option']) && !empty($inputs['option'])) {
-                    $options = $inputs['option'];
+    $options = $inputs['option'];
+    $options = array_filter($options, function ($value) {
+        return $value !== null;
+    });
 
-                    $options = array_filter($options, function ($value) {return $value !== null;});
-                    // return $options;
+    $uploadedImages = $_FILES['images'];
 
-                } 
+    $jsonImg = [];
+
+    foreach ($options as $key => $value) {
+        if($value != null){
+        $optionData = [
+            "value" => $value,
+            "image" => [
+
+                "name" => $uploadedImages['name'][$key],
+                "type" => $uploadedImages['type'][$key],
+                "size" => $uploadedImages['size'][$key]
+                
+            ]
+        ];
+
+        $jsonImg["options"][] = $optionData;
+
+    }
+}
+
+    return json_encode($jsonImg,JSON_PRETTY_PRINT);
+}
+ 
                 else {
                     $options = []; 
                 }
         $fieldInsertion = Field::create($inputs);
 
+        $fieldInsertion->options = $jsonOptions;
+        $fieldInsertion->save();
         $field_id = $fieldInsertion->id;
         $services = $inputs['ms_item'];
 
@@ -109,7 +135,7 @@ class FieldController extends Controller
             ]);
         }
         
-        return redirect('admin/fields');
+        return redirect('admin/fields'); 
 
 
     }
