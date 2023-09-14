@@ -89,5 +89,6 @@ Route::get('formfields/list', [FormFieldController::class, 'list'])->name('formf
 Route::resource('formfields', FormFieldController::class);
 
 
-Route::get('services/list', [ServiceController::class, 'list'])->name('services.list');
+Route::get('services/list', [ServiceController::class, 'index'])->name('services.list');
+Route::get('services/', [ServiceController::class, 'index'])->name('services.index');
 Route::resource('services', ServiceController::class);

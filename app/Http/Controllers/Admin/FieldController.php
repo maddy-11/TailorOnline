@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Field;
+use App\Models\Admin\Service;
+use App\Models\Fields_service;
 use Illuminate\Http\Request;
 use App\Http\Requests\Fields\StoreRequest;
 use App\Http\Requests\Fields\UpdateRequest;
@@ -68,7 +70,9 @@ class FieldController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.fields.create');
+        $services = Service::get();
+        // dd($services);
+        return view('admin.pages.fields.create',['services'=>$services]);
     }
 
     /**
@@ -77,16 +81,32 @@ class FieldController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
         $inputs = $request->all();
-        try {
-            Field::create($inputs);
-            session()->flash('success', 'Field Added Successfully');
-        } catch (\Exception $exception) {
-            session()->flash('error', 'Something went Wrong, Try again later');
+        $options = $inputs['option'];
+        // return $options;
+
+        $fieldInsertion = Field::create($inputs);
+
+        $field_id = $fieldInsertion->id;
+        $services = $inputs['ms_item'];
+
+        $options = $inputs['option'];
+
+        foreach ($services as $service) {
+            Fields_service::create([
+                'field_id' => $field_id,
+                'services_id' => $service
+            ]);
         }
-        return redirect(route('admin.fields.index'));
+
+
+        
+        // return redirect(route('admin.fields.index'));
+        
+        return "hello";
+
     }
 
     /**

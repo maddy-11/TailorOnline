@@ -183,6 +183,27 @@
                 </li>
 
 
+                 <li>
+                    <a href="#" title="UI Components" data-filter-tags="ui components">
+                        <i class="fal fa-window"></i>
+                        <span class="nav-link-text" data-i18n="nav.ui_components">Services</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="http://localhost/new_project/tailoronline/public/admin/services" title="All Fields Values" data-filter-tags="ui components popovers">
+                                <span class="nav-link-text" data-i18n="nav.ui_components_popovers">All Services</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('admin.services.create')}}" title="New Field Values" data-filter-tags="ui components popovers">
+                                <span class="nav-link-text" data-i18n="nav.ui_components_popovers">Add a New Service</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
             </ul>
             <div class="filter-message js-filter-message bg-success-600"></div>
         </nav>
@@ -200,12 +221,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Support Chat">
+                    <a href="{{route('admin.services.list')}}" data-toggle="tooltip" data-placement="top" title="Support Chat">
                         <i class="fal fa-life-ring"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="Make a call">
+                    <a href="{{route('admin.services.create')}}" data-toggle="tooltip" data-placement="top" title="Make a call">
                         <i class="fal fa-phone"></i>
                     </a>
                 </li>

@@ -2,7 +2,7 @@
 @extends('admin.layouts.app')
 
 {{-- Page title --}}
-@section('title', 'Dashboard')
+@section('title', 'Add Services')
 {{-- vendor styles --}}
 
 {{-- page styles --}}
@@ -45,7 +45,7 @@
                 </h2>
             </div>
             <div class="panel-container show">
-                <form action="{{route('admin.services.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.services.store')}}" method="POST" >
                     @csrf
                     <div class="panel-content">
                         <div class="panel-tag"></div>

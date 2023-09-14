@@ -80,7 +80,7 @@ class FieldValueController extends Controller
      */
     public function create()
     {
-        $fields = Field::where('status', 'Active',)->get();
+        $fields = Field::where('status', 'Active')->get();
         return view('admin.pages.fieldvalues.create', compact('fields'));
     }
 
@@ -92,7 +92,7 @@ class FieldValueController extends Controller
      */
     public function store(Request $request)
     {
-        try {
+              try {
             $inputs = $request->all();
             $inputs['image'] = '';
             if ($request->hasFile('image')) {
@@ -104,6 +104,7 @@ class FieldValueController extends Controller
             session()->flash('error', 'Something went Wrong, Try again later');
         }
         return redirect(route('admin.fieldvalues.index'));
+
     }
 
     /**

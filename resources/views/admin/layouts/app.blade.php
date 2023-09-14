@@ -31,6 +31,13 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
     <link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets/img/favicon/favicon-32x32.png')}}">
     <link rel="mask-icon" href="{{asset('assets/img/favicon/safari-pinned-tab.svg')}}" color="#5bbad5">
     <link rel="stylesheet" media="screen, print" href="{{asset('assets/css/datagrid/datatables/datatables.bundle.css')}}">
+    <link rel="stylesheet" media="screen, print" href="{{asset('assets/css/formplugins/select2/select2.bundle.css')}}">
+
+
+    
+
+
+
 
     <!-- BEGIN: Page JS-->
     @yield('page-styles')
@@ -804,6 +811,8 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
 						+ src/../jquery-snippets.js (core) -->
 <script src="{{asset('assets/js/vendors.bundle.js')}}"></script>
 <script src="{{asset('assets/js/app.bundle.js')}}"></script>
+<script src="{{asset('assets/js/formplugins/select2/select2.bundle.js')}}"></script>
+
 <script type="text/javascript">
     /* Activate smart panels */
     $('#js-page-content').smartPanel();

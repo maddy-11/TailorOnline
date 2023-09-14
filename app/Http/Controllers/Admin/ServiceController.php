@@ -22,7 +22,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.services.index');
+        $data = Service::get();
+        return view('admin.pages.services.services',['data'=>$data]);
     }
 
     public function list(Request $request)
@@ -69,6 +70,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
+
         return view('admin.pages.services.create');
     }
 
@@ -78,7 +80,8 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    
+    public function store(Request $request)
     {
         $inputs = $request->all();
         try {
@@ -88,6 +91,7 @@ class ServiceController extends Controller
             session()->flash('error', 'Something went Wrong, Try again later');
         }
         return redirect(route('admin.services.index'));
+
     }
 
     /**
