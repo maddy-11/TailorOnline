@@ -93,27 +93,21 @@ class FieldController extends Controller
 
     $uploadedImages = $_FILES['images'];
 
-    $jsonImg = [];
+    $jsonData = [];
 
     foreach ($options as $key => $value) {
         if($value != null){
         $optionData = [
             "value" => $value,
-            "image" => [
-
-                "name" => $uploadedImages['name'][$key],
-                "type" => $uploadedImages['type'][$key],
-                "size" => $uploadedImages['size'][$key]
-                
-            ]
+            "image" => $uploadedImages['name'][$key],
         ];
 
-        $jsonImg["options"][] = $optionData;
+        $jsonData["options"][] = $optionData;
 
     }
 }
-
-    return json_encode($jsonImg,JSON_PRETTY_PRINT);
+    $final = json_encode($jsonData, JSON_PRETTY_PRINT);
+    
 }
  
                 else {
@@ -121,7 +115,7 @@ class FieldController extends Controller
                 }
         $fieldInsertion = Field::create($inputs);
 
-        $fieldInsertion->options = $jsonOptions;
+        $fieldInsertion->options = $final;
         $fieldInsertion->save();
         $field_id = $fieldInsertion->id;
         $services = $inputs['ms_item'];
